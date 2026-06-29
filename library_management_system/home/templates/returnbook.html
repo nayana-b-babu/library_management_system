@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Return Book</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI',sans-serif;
+        }
+
+        /* BODY */
+        body{
+            background:linear-gradient(135deg,#edf3ff,#f7f9fc);
+            overflow-x:hidden;
+        }
+
+        /* Decorative circles */
+        body::before{
+            content:"";
+            position:fixed;
+            width:360px;
+            height:360px;
+            background:#efe3b2;
+            border-radius:50%;
+            top:-150px;
+            left:-120px;
+            z-index:-1;
+        }
+
+        body::after{
+            content:"";
+            position:fixed;
+            width:320px;
+            height:320px;
+            background:#bbcdf3;
+            border-radius:50%;
+            right:-120px;
+            bottom:-120px;
+            z-index:-1;
+        }
+
+        /* PAGE TITLE */
+        .page-title{
+            text-align:center;
+            margin-top:40px;
+            margin-bottom:30px;
+        }
+
+        .page-title h1{
+            font-size:52px;
+            color:#07162d;
+            margin-bottom:8px;
+        }
+
+        .page-title p{
+            color:#666;
+            font-size:16px;
+        }
+
+        /* MAIN CONTAINER */
+        .container{
+            width:90%;
+            max-width:1200px;
+            margin:20px auto 50px;
+            display:flex;
+            gap:35px;
+            align-items:stretch;
+        }
+
+        /* FORM CARD */
+        .form-section{
+            flex:1;
+            background:#fff;
+            padding:35px;
+            border-radius:22px;
+            box-shadow:0 12px 30px rgba(0,0,0,0.10);
+        }
+
+        /* Remove default form styling */
+        form{
+            background:none;
+            box-shadow:none;
+            padding:0;
+        }
+
+        /* Space between fields */
+        form p{
+            margin-bottom:28px;
+        }
+
+        /* Labels */
+        form label{
+            display:block;
+            font-size:18px;
+            font-weight:500;
+            color:#222;
+            margin-bottom:10px;
+        }
+
+        /* Student Name */
+        form input[type="text"]{
+            width:100%;
+            height:52px;
+            border:1px solid #d7d7d7;
+            border-radius:10px;
+            padding:0 15px;
+            font-size:17px;
+            outline:none;
+        }
+
+        /* Book Select */
+        form select{
+            width:100%;
+            height:52px;
+            border:1px solid #d7d7d7;
+            border-radius:10px;
+            padding:0 15px;
+            font-size:17px;
+            background:white;
+            outline:none;
+        }
+
+        /* Return Date */
+        form input[type="date"]{
+            width:100%;
+            height:52px;
+            border:1px solid #d7d7d7;
+            border-radius:10px;
+            padding:0 15px;
+            font-size:17px;
+            outline:none;
+        }
+
+        /* Focus */
+        form input[type="text"]:focus,
+        form input[type="date"]:focus,
+        form select:focus{
+            border-color:#1b3558;
+            box-shadow:0 0 6px rgba(27,53,88,.15);
+        }
+
+        /* Submit Button */
+        form input[type="submit"]{
+            width:100%;
+            height:52px;
+            border:none;
+            border-radius:8px;
+            background:#1b3558;
+            color:white;
+            font-size:20px;
+            font-weight:600;
+            cursor:pointer;
+            transition:.3s;
+            margin-top:10px;
+        }
+
+        form input[type="submit"]:hover{
+            background:#274774;
+        }
+
+        /* IMAGE CARD */
+        .image-section{
+            flex:1;
+            background:white;
+            border-radius:22px;
+            overflow:hidden;
+            box-shadow:0 12px 30px rgba(0,0,0,0.10);
+        }
+
+        .image-section img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+
+        /* Responsive */
+        @media(max-width:900px){
+
+        .container{
+            flex-direction:column;
+        }
+
+        .image-section{
+            display:none;
+        }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TITLE (NOT IN BOX) -->
+    <div class="page-title">
+        <h1>Return Book</h1>
+        <p>Library Management System</p>
+    </div>
+
+    <div class="container">
+
+        <!-- FORM -->
+        <div class="form-section">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Return Book">
+            </form>
+        </div>
+
+        <!-- IMAGE -->
+        <div class="image-section">
+            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794" alt="Books Image">
+        </div>
+
+    </div>
+
+</body>
+</html>

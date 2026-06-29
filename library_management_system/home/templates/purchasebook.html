@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Book</title>
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background: url("{% static 'images/book.png' %}");
+    background-size:650px auto;
+    background-repeat:no-repeat;
+    background-position:left 180px top 180px;
+    background-color:#fcfcfc;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+
+    position:relative;
+    overflow:hidden;
+}
+
+/* Cream circle */
+body::before{
+    content:"";
+    position:fixed;
+    width:300px;
+    height:300px;
+    background:#f5ebd3;
+    border-radius:50%;
+    top:-80px;
+    right:-80px;
+    z-index:-1;
+}
+
+/* Light blue circle */
+body::after{
+    content:"";
+    position:fixed;
+    width:250px;
+    height:250px;
+    background:#dfe9f3;
+    border-radius:50%;
+    bottom:-70px;
+    left:-70px;
+    z-index:-1;
+}
+
+.page-title{
+    position:absolute;
+    top:30px;
+    left:50%;
+    transform:translateX(-50%);
+
+    font-size:48px;
+    color:#2c3e50;
+    font-weight:bold;
+    margin:0;
+}
+
+.subtitle{
+    position:absolute;
+    top:95px;
+    left:50%;
+    transform:translateX(-50%);
+
+    color:#555;
+    font-size:18px;
+    margin:0;
+}
+
+.container{
+    width:450px;
+    background:rgb(255, 249, 241);
+    padding:40px;
+    border-radius:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+
+    margin-left:500px;
+    margin-top:110px;
+
+    position:relative;
+    overflow:hidden;
+}
+
+/* soft inner decoration */
+.container::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:#fff1c7;
+    border-radius:50%;
+    top:-70px;
+    right:-70px;
+}
+
+/* dotted icon decoration */
+.container .icon::after{
+    content:"";
+    position:absolute;
+    width:60px;
+    height:60px;
+    right:25px;
+    top:25px;
+
+    background-image:radial-gradient(#f4b400 2px, transparent 2px);
+    background-size:12px 12px;
+
+    opacity:.35;
+}
+
+.icon{
+    text-align:center;
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+    margin-bottom:30px;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-weight:bold;
+    color:#333;
+}
+
+input,
+select{
+    width:100%;
+    padding:12px;
+
+    border:1px solid #ccc;
+    border-radius:8px;
+
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:25px;
+
+    background:#2c3e50;
+    color:white;
+
+    border:none;
+    border-radius:8px;
+
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1f2d3a;
+}
+
+</style>
+</head>
+<body>
+
+    <h1 class="page-title">📚 Purchase Your Next Read</h1>
+    <p class="subtitle">Select your favorite book and begin your reading journey.</p>
+
+    <div class="container">
+
+        <h1>Purchase Book</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label>Student Name</label>
+            {{ form.stud_name }}
+
+            <label>Book Name</label>
+            {{ form.book_name }}
+
+            <button type="submit">Confirm Booking</button>
+        </form>
+
+    </div>
+
+</body>
+</html>

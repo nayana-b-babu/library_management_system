@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Books
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+body{
+    background:#f8fbff;
+}
+
+/* Decorative background */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:350px;
+    height:350px;
+    background:#fff6d8;
+    border-radius:50%;
+    top:-120px;
+    left:-120px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:320px;
+    height:320px;
+    background:#e8f2ff;
+    border-radius:50%;
+    right:-100px;
+    top:120px;
+    z-index:-1;
+}
+
+/* Heading */
+
+h1{
+    text-align:center;
+    color:#1b365d;
+    font-size:40px;
+    margin-top:-5px;
+    margin-bottom:15px;
+    font-weight:700;
+}
+
+/* Book Card */
+
+.book-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:82%;
+    margin:30px auto;
+    padding:35px;
+    background:#fff;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    overflow:hidden;
+    position:relative;
+    transition:.35s;
+}
+
+.book-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 35px rgba(0,0,0,.15);
+}
+
+/* Decorative corner */
+
+.book-card:nth-child(even)::before{
+    content:"";
+    position:absolute;
+    left:-70px;
+    bottom:-70px;
+    width:220px;
+    height:220px;
+    background:#eef6ff;
+    border-radius:50%;
+}
+
+.book-card:nth-child(odd)::before{
+    content:"";
+    position:absolute;
+    left:-70px;
+    top:-70px;
+    width:220px;
+    height:220px;
+    background:#fff6dc;
+    border-radius:50%;
+}
+
+/* Decorative dots */
+
+.book-card::after{
+    content:"";
+    position:absolute;
+    right:25px;
+    bottom:25px;
+    width:70px;
+    height:70px;
+    background-image:radial-gradient(#f4b400 2px,transparent 2px);
+    background-size:14px 14px;
+    opacity:.35;
+}
+
+/* Book Info */
+
+.book-info{
+    flex:1;
+    z-index:2;
+}
+
+.book-card h3{
+    color:#16345f;
+    font-size:34px;
+    margin-bottom:20px;
+}
+
+.book-card h3::after{
+    content:"";
+    display:block;
+    width:70px;
+    height:4px;
+    background:#f4b400;
+    margin-top:12px;
+    border-radius:5px;
+}
+
+.book-card p{
+    color:#555;
+    line-height:1.8;
+    font-size:19px;
+    max-width:800px;
+}
+
+/* Image */
+
+.book-image img{
+    width:170px;
+    height:230px;
+    object-fit:cover;
+    border-radius:12px;
+    margin-left:30px;
+    transition:.35s;
+}
+
+.book-card:hover .book-image img{
+    transform:scale(1.05);
+}
+
+</style>
+
+<h1>Library Books📖</h1>
+
+{% for b in book %}
+    <div class="book-card">
+
+    <div class="book-info">
+        <h3>{{ b.book_name }}</h3>
+        <p>{{ b.book_summary }}</p>
+    </div>
+
+    {% if b.book_image %}
+    <div class="book-image">
+        <img src="{{ b.book_image.url }}" alt="{{ b.book_name }}">
+    </div>
+    {% endif %}
+
+</div>
+{% endfor %}
+
+{% endblock %}

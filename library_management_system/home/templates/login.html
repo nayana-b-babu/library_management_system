@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login Page</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Poppins', sans-serif;
+    background: linear-gradient(135deg,#dbeafe,#fef3c7);
+}
+
+/* NEW wrapper for centering */
+.page{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    padding-top:0;
+    margin-top:-40px; 
+}
+
+/* main container (unchanged feel, just split layout added) */
+.login-wrapper{
+    display:flex;
+    width:750px;
+    height:420px;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+}
+
+/* left login box */
+.login-box{
+    flex:1;
+    padding:30px;
+    background:rgba(177, 151, 151, 0.85);
+    backdrop-filter: blur(10px);
+    text-align:center;
+}
+
+/* title */
+.login-box h2{
+    margin-bottom:20px;
+    color:#333;
+}
+
+/* inputs */
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+}
+
+/* button */
+button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#422753,#441a52);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* signup link */
+a{
+    display:block;
+    margin-top:15px;
+    color:#1d1020;
+    text-decoration:none;
+}
+
+/* RIGHT IMAGE (ONLY ADDITION) */
+.image-side{
+    flex:1;
+    background:url("https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1400&q=80")
+    center/cover no-repeat;
+    position:relative;
+}
+
+/* headings outside box */
+.main-title{
+    text-align:center;
+    font-size:40px;
+    font-weight:600;
+    color:#2d1b3d;
+    margin-top:-40px;
+    margin-bottom:0;
+}
+
+.sub-title{
+    text-align:center;
+    margin:2px 0 18px 0; 
+    font-size:14px;
+    color:#555;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <h1 class="main-title">Welcome to Library Management System📚</h1>
+    <p class="sub-title">Login to your account🔐</p>
+
+    <div class="login-wrapper">
+
+        <div class="login-box">
+            <h2>Login</h2>
+
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button type="submit">Login</button>
+            </form>
+
+            <a href="{% url 'signup' %}">Create account</a>
+        </div>
+
+        <div class="image-side"></div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<style>
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    min-height:70vh;
+    padding:50px 80px;
+    background:#ffffff;
+}
+
+.hero-image{
+    flex:1;
+    text-align:center;
+}
+
+.hero-image img{
+    width:450px;
+    max-width:100%;
+}
+
+.hero-content{
+    flex:1;
+    padding-left:50px;
+}
+
+.hero-content h1{
+    font-size:75px;
+    color:#4b2c72;
+    font-family:Georgia, serif;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:18px;
+    color:#5c4b72;
+    line-height:1.8;
+    margin-bottom:20px;
+    max-width:500px;
+}
+
+.hero-content h3{
+    color:#4b2c72;
+    font-size:24px;
+}
+
+@media(max-width:768px){
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding:30px;
+    }
+
+    .hero-content{
+        padding-left:0;
+        margin-top:30px;
+    }
+
+    .hero-content h1{
+        font-size:50px;
+    }
+
+    .hero-image img{
+        width:300px;
+    }
+}
+</style>
+
+<div class="hero">
+
+    <div class="hero-image">
+        <img src="https://cdn-icons-png.flaticon.com/512/2436/2436636.png" alt="Library">
+    </div>
+
+    <div class="hero-content">
+
+        <h1>Book Store</h1>
+
+        <p>
+            Welcome to our Library Management System. Discover a wide collection
+            of books, manage book issues and returns, and enjoy a seamless
+            reading experience through our digital library platform.
+        </p>
+
+        <h3>📖 Explore • Borrow • Learn</h3>
+
+    </div>
+
+</div>
+
+{% endblock %}

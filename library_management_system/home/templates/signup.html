@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#f0e5f1,#eaeadc);
+    font-family:'Poppins',sans-serif;
+}
+
+/* Decorative circles */
+body::before{
+        content:"";
+        position:fixed;
+        width:360px;
+        height:360px;
+        background:#efe3b2;
+        border-radius:50%;
+        top:-150px;
+        left:-120px;
+        z-index:-1;
+    }
+
+body::after{
+        content:"";
+        position:fixed;
+        width:320px;
+        height:320px;
+        background:#bbcdf3;
+        border-radius:50%;
+        right:-120px;
+        bottom:-120px;
+        z-index:-1;
+    }
+
+.signup-container{
+    width:420px;
+    padding:25px;
+    background:rgba(241, 230, 230, 0.85);
+    backdrop-filter:blur(10px);
+    border-radius:18px;
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
+
+    transform: scale(0.88);      /* Makes the whole card smaller */
+    transform-origin: center;
+}
+
+.signup-container h2{
+    margin:0 0 5px;
+    font-size:28px;
+}
+
+.subtitle{
+    margin:0 0 15px;
+    font-size:14px;
+}
+
+form p{
+    margin-bottom:15px;
+}
+
+form label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:500;
+    color:#333;
+}
+
+form input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+}
+
+form input:focus{
+    border-color:#5b2c6f;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#422753,#441a52);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+.login-link{
+    text-align:center;
+    margin-top:18px;
+}
+
+.login-link a{
+    color:#2d1b3d;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.login-link a:hover{
+    text-decoration:underline;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="signup-container">
+
+    <h2>Create Account</h2>
+    <p class="subtitle">Join the Library Management System 📚</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Register</button>
+    </form>
+
+    <div class="login-link">
+        Already have an account?
+        <a href="{% url 'login' %}">Login</a>
+    </div>
+
+</div>
+
+</body>
+</html>
