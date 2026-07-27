@@ -141,6 +141,11 @@ button:hover{
 
     <form method="POST">
         {% csrf_token %}
+        {% if form.errors %}
+    <div style="color:red;">
+        {{ form.errors }}
+    </div>
+    {% endif %}
         {{ form.as_p }}
 
         <button type="submit">Register</button>

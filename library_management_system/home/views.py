@@ -70,6 +70,8 @@ def signup(request):
             user = form.save()
             login(request,user)
             return redirect('home')
+        else:
+            print(form.errors)
     else:
         form = UserCreationForm()
     return render(request,'signup.html',{'form':form})
