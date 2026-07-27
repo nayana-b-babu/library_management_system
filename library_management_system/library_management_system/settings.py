@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["librarymanagementsystem-production-af68.up.railway.app"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://librarymanagementsystem-production-af68.up.railway.app",
+]
+
 
 # Application definition
 
